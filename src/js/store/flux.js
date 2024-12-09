@@ -37,6 +37,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			llamarDatosApi: () => {
+				fetch("https://www.swapi.tech/api/")
+					.then(res => res.json())
+					.then(data => console.log(data))
+					.catch(err => console.error(err))
+
 			}
 		}
 	};
