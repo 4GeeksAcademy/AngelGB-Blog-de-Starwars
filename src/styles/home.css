@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(54, 54, 54);
+}
+video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 105%;
+    min-height: 100%;
+    transform: translateX(calc((100% - 100vw) / 2));
+    z-index: -2;
+  }
+.barraNav {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+.card {
+    background-color: rgba(129, 128, 128, 0.493);
+    color: white;
+}

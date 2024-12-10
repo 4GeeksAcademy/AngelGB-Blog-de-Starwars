@@ -12,7 +12,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			films: [],
+			people: [],
+			planets:[],
+			species:[],
+			starships: [],
+			vehicles: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -38,13 +44,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			llamarDatosApi: () => {
-				fetch("https://www.swapi.tech/api/")
+			llamarPeople: () => {
+				fetch("https://www.swapi.tech/api/people?page=1&limit=150")
 					.then(res => res.json())
-					.then(data => console.log(data))
+					.then(response => setStore({ "people": response.results }))
 					.catch(err => console.error(err))
-
+			},
+			llamarPlanets: () => {
+				fetch("https://www.swapi.tech/api/planets?page=1&limit=70")
+					.then(res => res.json())
+					.then(response => setStore({ "planets": response.results }))
+					.catch(err => console.error(err))
+			},
+			llamarFilms: () => {
+				fetch("https://www.swapi.tech/api/films")
+					.then(res => res.json())
+					.then(response => setStore({ "films": response.result }))
+					.catch(err => console.error(err))
+			},
+			llamarSpecies: () => {
+				fetch("https://www.swapi.tech/api/species?page=1&limit=50")
+					.then(res => res.json())
+					.then(response => setStore({ "species": response.results }))
+					.catch(err => console.error(err))
+			},
+			llamarstarships: () => {
+				fetch("https://www.swapi.tech/api/starships?page=1&limit=50")
+					.then(res => res.json())
+					.then(response => setStore({ "starships": response.results }))
+					.catch(err => console.error(err))
+			},
+			llamarvehicles: () => {
+				fetch("https://www.swapi.tech/api/vehicles?page=1&limit=40")
+					.then(res => res.json())
+					.then(response => setStore({ "vehicles": response.results }))
+					.catch(err => console.error(err))
+			},
+			llamarTodo: () => {
+				getActions().llamarPeople()
+				getActions().llamarPlanets()
+				getActions().llamarFilms()
+				getActions().llamarSpecies()
+				getActions().llamarstarships()
+				getActions().llamarvehicles()
 			}
+			
 		}
 	};
 };
