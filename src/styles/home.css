@@ -1,5 +1,16 @@
 body {
     background-color: rgb(54, 54, 54);
+    background-image: url(https://wallpapers.com/images/hd/star-wars-spaceship-4wonfi4vokbaueao.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+.encabezado {
+    background-color: black;
+    color: yellow;
+    text-decoration: none;
+    outline: none;
 }
 video {
     position: fixed;
@@ -11,12 +22,16 @@ video {
     z-index: -2;
   }
 .barraNav {
-    background-color: rgb(54, 54, 54);
-    color: white;
+    background-color: rgba(10, 10, 10, 0);
     text-decoration: none;
     outline: none;
 }
 .card {
-    background-color: rgba(129, 128, 128, 0.493);
+    background-color: rgba(0, 0, 0, 0.795);
     color: white;
+}
+.estilo {
+    color: yellow;
+    text-decoration: none;
+    outline: none;
 }
