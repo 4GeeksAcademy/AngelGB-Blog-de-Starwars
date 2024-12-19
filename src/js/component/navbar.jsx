@@ -1,33 +1,135 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	const { favorites } = store;
+
 	return (
 		<nav className="navbar mb-3 barraNav p-3">
 			<Link className="barraNav" to="/home">
-				<span className="navbar-brand mb-0 h1"><img src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-0.png" width={"75px"} alt="" /></span>
+				<span className="navbar-brand mb-0 h1">
+					<img src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-0.png" width={"75px"} alt="Star Wars Logo" />
+				</span>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
 				<div className="dropstart">
-				<button type="button" className="btn p-0 border-0" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a97bf8e2-19dd-4d0d-bce2-0d9e12eaa48a/dgj25p5-80c7ac8d-b290-4bc6-b850-726674355b48.png/v1/fill/w_977,h_374,q_80,strp/i_made_the_windows95_start_button__by_nathandasilva_dgj25p5-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Mzc0IiwicGF0aCI6IlwvZlwvYTk3YmY4ZTItMTlkZC00ZDBkLWJjZTItMGQ5ZTEyZWFhNDhhXC9kZ2oyNXA1LTgwYzdhYzhkLWIyOTAtNGJjNi1iODUwLTcyNjY3NDM1NWI0OC5wbmciLCJ3aWR0aCI6Ijw9OTc3In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.3HjOiVulL5qg8XuWJyys_bvT62alteM1YZDTy1lwvbY" style={{ width: '75px' }} alt="" />
+					<button type="button" className="btn btn-warning" data-bs-toggle="dropdown" aria-expanded="false">
+						Favoritos
+					</button>
+					<ul className="dropdown-menu p-2" style={{ minWidth: "250px" }}>
 
-				</button>
-				<ul className="dropdown-menu windows95-menu">
-				<Link className="estilo" to={"/"} >
-					<li className="dropdown-item">Registro</li>
-				</Link>
-				<Link className="estilo" to={"/login"} >
-					<li className="dropdown-item">Login</li>
-				</Link>
-				<Link className="estilo" to={"/dashboard"} >
-					<li className="dropdown-item">Área privada</li>
-				</Link>
-				</ul>
-			</div>
-				</Link>
+						<h6 className="dropdown-header">Personajes</h6>
+						{favorites.characters.length > 0 ? (
+							favorites.characters.map((item, index) => (
+								<Link className="estilo" to={`/single/characters/${item.uid}`} >
+								<li key={index} className="dropdown-item d-flex justify-content-between">
+									{item.name}
+									<button
+										className="btn btn-sm btn-outline-danger"
+										onClick={(e) =>{ e.preventDefault(); actions.removeFromFavorites(item, "characters")}}
+									>
+										&#x1F5D1;
+									</button>
+								</li></Link>
+							))
+						) : (
+							<li className="dropdown-item text-muted">No hay personajes</li>
+						)}
+
+						<h6 className="dropdown-header">Planetas</h6>
+						{favorites.planets.length > 0 ? (
+							favorites.planets.map((item, index) => (
+								<Link className="estilo" to={`/single/planets/${item.uid}`} >
+								<li key={index} className="dropdown-item d-flex justify-content-between">
+									{item.name}
+									<button
+										className="btn btn-sm btn-outline-danger"
+										onClick={(e) => {e.preventDefault(); actions.removeFromFavorites(item, "planets")}}
+									>
+										&#x1F5D1;
+									</button>
+								</li></Link>
+							))
+						) : (
+							<li className="dropdown-item text-muted">No hay planetas</li>
+						)}
+
+						<h6 className="dropdown-header">Especies</h6>
+						{favorites.species.length > 0 ? (
+							favorites.species.map((item, index) => (
+								<Link className="estilo" to={`/single/species/${item.uid}`} >
+								<li key={index} className="dropdown-item d-flex justify-content-between">
+									{item.name}
+									<button
+										className="btn btn-sm btn-outline-danger"
+										onClick={(e) => {e.preventDefault(); actions.removeFromFavorites(item, "species")}}
+									>
+										&#x1F5D1;
+									</button>
+								</li></Link>
+							))
+						) : (
+							<li className="dropdown-item text-muted">No hay especies</li>
+						)}
+
+						<h6 className="dropdown-header">Naves</h6>
+						{favorites.starships.length > 0 ? (
+							favorites.starships.map((item, index) => (
+								<Link className="estilo" to={`/single/starships/${item.uid}`} >
+								<li key={index} className="dropdown-item d-flex justify-content-between">
+									{item.name}
+									<button
+										className="btn btn-sm btn-outline-danger"
+										onClick={(e) => {e.preventDefault(); actions.removeFromFavorites(item, "starships")}}
+									>
+										&#x1F5D1;
+									</button>
+								</li></Link>
+							))
+						) : (
+							<li className="dropdown-item text-muted">No hay naves</li>
+						)}
+
+						<h6 className="dropdown-header">Vehiculos</h6>
+						{favorites.vehicles.length > 0 ? (
+							favorites.vehicles.map((item, index) => (
+								<Link className="estilo" to={`/single/vehicles/${item.uid}`} >
+								<li key={index} className="dropdown-item d-flex justify-content-between">
+									{item.name}
+									<button
+										className="btn btn-sm btn-outline-danger"
+										onClick={(e) => {e.preventDefault(); actions.removeFromFavorites(item, "vehicles")}}
+									>
+										&#x1F5D1;
+									</button>
+								</li></Link>
+							))
+						) : (
+							<li className="dropdown-item text-muted">No hay vehiculos</li>
+						)}
+						
+						<h6 className="dropdown-header">Peliculas</h6>
+						{favorites.films.length > 0 ? (
+							favorites.films.map((item, index) => (
+								<Link className="estilo" to={`/single/films/${item.uid}`} >
+								<li key={index} className="dropdown-item d-flex justify-content-between">
+									{item.properties.title}
+									<button
+										className="btn btn-sm btn-outline-danger"
+										onClick={(e) => {e.preventDefault(); actions.removeFromFavorites(item, "films")}}
+									>
+										&#x1F5D1;
+									</button>
+								</li></Link>
+							))
+						) : (
+							<li className="dropdown-item text-muted">No hay peliculas</li>
+						)}
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);
