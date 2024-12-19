@@ -9,15 +9,17 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar mb-3 barraNav p-3">
-			<Link className="barraNav" to="/home">
+			<Link className="barraNav" to="/">
 				<span className="navbar-brand mb-0 h1">
 					<img src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo-0.png" width={"75px"} alt="Star Wars Logo" />
 				</span>
 			</Link>
 			<div className="ml-auto">
 				<div className="dropstart">
-					<button type="button" className="btn btn-warning" data-bs-toggle="dropdown" aria-expanded="false">
-						Favoritos
+					<button type="button" className="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
+					<img src="https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-star-wars-stormtrooper-sticker-vector-png-image_6896914.png" width={"48px"} /> 
+					<img src="https://fontmeme.com/permalink/241219/76281dd64817668294ee72968a37523a.png" alt="fuente-de-star-wars" border="0"/>
+					<img src="https://png.pngtree.com/png-clipart/20230913/original/pngtree-bb8-clipart-cartoon-star-wars-bb-vector-png-image_11054353.png" width={"48px"} /> 
 					</button>
 					<ul className="dropdown-menu p-2" style={{ minWidth: "250px" }}>
 

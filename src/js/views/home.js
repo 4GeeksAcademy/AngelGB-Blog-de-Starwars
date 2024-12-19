@@ -11,31 +11,32 @@ export const Home = () => {
 
 	
 
-	useEffect(() => {
-		actions.llamarTodo()
-	}, [])
+	// useEffect(() => {
+	// 	actions.llamarTodo()
+	// }, [])
 
 	return (
-		<div className="text-center mt-3 p-5">
-			<div className="row">
+		<div className="text-center mt-3 p-3">
+			<img className="img-fluid p-1" src="https://fontmeme.com/permalink/241219/23e355daae3a2452f75758d0a671f8ec.png" alt="fuente-de-star-wars" border="0"/>
+			<div className="row">	
 				<ul className="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
 					<li className="nav-item" role="presentation">
-						<button className=" btn encabezado" id="pills-personajes-tab" data-bs-toggle="pill" data-bs-target="#pills-personajes" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><h2>Personajes</h2></button>
+						<button className=" btn encabezado" id="pills-personajes-tab" data-bs-toggle="pill" data-bs-target="#pills-personajes" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><img src="https://fontmeme.com/permalink/241219/3f5e088a8c91d35ce46f343393a4bc80.png" alt="fuente-de-star-wars" border="0"/></button>
 					</li>
 					<li className="nav-item" role="presentation">
-						<button className="btn encabezado" id="pills-especies-tab" data-bs-toggle="pill" data-bs-target="#pills-especies" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><h2>Especies</h2></button>
+						<button className="btn encabezado" id="pills-especies-tab" data-bs-toggle="pill" data-bs-target="#pills-especies" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><img src="https://fontmeme.com/permalink/241219/1d4b06e01d8b087adbd89d1312c2751b.png" alt="fuente-de-star-wars" border="0"/></button>
 					</li>
 					<li className="nav-item" role="presentation">
-						<button className="btn encabezado" id="pills-planetas-tab" data-bs-toggle="pill" data-bs-target="#pills-planetas" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><h2>Planetas</h2></button>
+						<button className="btn encabezado" id="pills-planetas-tab" data-bs-toggle="pill" data-bs-target="#pills-planetas" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><img src="https://fontmeme.com/permalink/241219/6819e67e790b0d6c05bbfddd833af0d7.png" alt="fuente-de-star-wars" border="0"/></button>
 					</li>
 					<li className="nav-item" role="presentation">
-						<button className="btn encabezado" id="pills-naves-tab" data-bs-toggle="pill" data-bs-target="#pills-naves" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><h2>Naves</h2></button>
+						<button className="btn encabezado" id="pills-naves-tab" data-bs-toggle="pill" data-bs-target="#pills-naves" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><img src="https://fontmeme.com/permalink/241219/a3f2b74d026771dcc790532fd3f25066.png" alt="fuente-de-star-wars" border="0"/></button>
 					</li>
 					<li className="nav-item" role="presentation">
-						<button className="btn encabezado" id="pills-vehiculos-tab" data-bs-toggle="pill" data-bs-target="#pills-vehiculos" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><h2>Vehiculos</h2></button>
+						<button className="btn encabezado" id="pills-vehiculos-tab" data-bs-toggle="pill" data-bs-target="#pills-vehiculos" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><img src="https://fontmeme.com/permalink/241219/69e17727703f5e7be77fe27fd75e28fd.png" alt="fuente-de-star-wars" border="0"/></button>
 					</li>
 					<li className="nav-item" role="presentation">
-						<button className="btn encabezado" id="pills-peliculas-tab" data-bs-toggle="pill" data-bs-target="#pills-peliculas" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><h2>Peliculas</h2></button>
+						<button className="btn encabezado" id="pills-peliculas-tab" data-bs-toggle="pill" data-bs-target="#pills-peliculas" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><img src="https://fontmeme.com/permalink/241219/341c667bc07eec18ef86273af76a480d.png" alt="fuente-de-star-wars" border="0"/></button>
 					</li>
 				</ul>
 				<div className="tab-content container" id="pills-tabContent">

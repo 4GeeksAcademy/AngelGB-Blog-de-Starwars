@@ -1,3 +1,4 @@
+import Atropos from "atropos/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -6,8 +7,15 @@ export const CardEspecificacion = ({ Foto, Nombre, spec, spec2, spec3, spec4, sp
         <div>
             <div className="card mb-3">
                 <div className="row g-0">
+
                     <div className="col-md-4">
-                        <img src={Foto} className="img-fluid rounded-start" alt="{Nombre}" />
+                        <Atropos          // Envuelve la tarjeta con Atropos
+                            activeOffset={40} // Configura el efecto 3D (profundidad)
+                            shadow={true}    // Activa la sombra interactiva
+                            highlight={true} // Activa la iluminación al mover el mouse
+                        >
+                            <img src={Foto} className="img-fluid rounded-start" alt="{Nombre}" />
+                        </Atropos>
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
@@ -26,7 +34,7 @@ export const CardEspecificacion = ({ Foto, Nombre, spec, spec2, spec3, spec4, sp
             </div>
             <div className="d-flex justify-content-center">
                 <Link to="/home">
-                <button className="btn btn-primary">Volver</button>
+                    <button className="btn btn-primary">Volver</button>
                 </Link>
             </div>
         </div>

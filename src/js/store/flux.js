@@ -25,10 +25,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			llamarPeople: () => {
-				fetch("https://www.swapi.tech/api/people?page=1&limit=150")
-					.then(res => res.json())
-					.then(response => setStore({ "people": response.results }))
-					.catch(err => console.error(err))
+				const peopleLocalStorage = localStorage.getItem("people");
+			
+				if (peopleLocalStorage) {
+					setStore({ people: JSON.parse(peopleLocalStorage) });
+					console.log("people desde localStorage");
+				} else {
+					fetch("https://www.swapi.tech/api/people?page=1&limit=150")
+						.then(res => res.json())
+						.then(response => {
+							localStorage.setItem("people", JSON.stringify(response.results));
+							setStore({ people: response.results });
+							console.log("people desde API y almacenados en localStorage");
+						})
+						.catch(err => console.error(err));
+				}
 			},
 			llamarPeopleId: (id) => {
 				fetch(`https://www.swapi.tech/api/people/${id}`)
@@ -37,10 +48,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			llamarPlanets: () => {
-				fetch("https://www.swapi.tech/api/planets?page=1&limit=70")
-					.then(res => res.json())
-					.then(response => setStore({ "planets": response.results }))
-					.catch(err => console.error(err))
+				const planetsLocalStorage = localStorage.getItem("planets");
+			
+				if (planetsLocalStorage) {
+					setStore({ planets: JSON.parse(planetsLocalStorage) });
+					console.log("planets desde localStorage");
+				} else {
+					fetch("https://www.swapi.tech/api/planets?page=1&limit=70")
+						.then(res => res.json())
+						.then(response => {
+							localStorage.setItem("planets", JSON.stringify(response.results));
+							setStore({ planets: response.results });
+							console.log("planets desde API y almacenados en localStorage");
+						})
+						.catch(err => console.error(err));
+				}
 			},
 			llamarPlanetsId: (id) => {
 				fetch(`https://www.swapi.tech/api/planets/${id}`)
@@ -49,10 +71,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			llamarFilms: () => {
-				fetch("https://www.swapi.tech/api/films")
-					.then(res => res.json())
-					.then(response => setStore({ "films": response.result }))
-					.catch(err => console.error(err))
+				const filmsLocalStorage = localStorage.getItem("films");
+			
+				if (filmsLocalStorage) {
+					setStore({ films: JSON.parse(filmsLocalStorage) });
+					console.log("films desde localStorage");
+				} else {
+					fetch("https://www.swapi.tech/api/films")
+						.then(res => res.json())
+						.then(response => {
+							localStorage.setItem("films", JSON.stringify(response.result));
+							setStore({ films: response.result });
+							console.log("films desde API y almacenados en localStorage");
+						})
+						.catch(err => console.error(err));
+				}
 			},
 			llamarFilmsId: (id) => {
 				fetch(`https://www.swapi.tech/api/films/${id}`)
@@ -61,10 +94,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			llamarSpecies: () => {
-				fetch("https://www.swapi.tech/api/species?page=1&limit=50")
-					.then(res => res.json())
-					.then(response => setStore({ "species": response.results }))
-					.catch(err => console.error(err))
+				const speciesLocalStorage = localStorage.getItem("species");
+			
+				if (speciesLocalStorage) {
+					setStore({ planets: JSON.parse(speciesLocalStorage) });
+					console.log("species desde localStorage");
+				} else {
+					fetch("https://www.swapi.tech/api/species?page=1&limit=50")
+						.then(res => res.json())
+						.then(response => {
+							localStorage.setItem("species", JSON.stringify(response.results));
+							setStore({ species: response.results });
+							console.log("species desde API y almacenados en localStorage");
+						})
+						.catch(err => console.error(err));
+				}
 			},
 			llamarSpeciesId: (id) => {
 				fetch(`https://www.swapi.tech/api/species/${id}`)
@@ -73,10 +117,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			llamarstarships: () => {
-				fetch("https://www.swapi.tech/api/starships?page=1&limit=50")
-					.then(res => res.json())
-					.then(response => setStore({ "starships": response.results }))
-					.catch(err => console.error(err))
+				const starshipsLocalStorage = localStorage.getItem("starships");
+			
+				if (starshipsLocalStorage) {
+					setStore({ starships: JSON.parse(starshipsLocalStorage) });
+					console.log("starships desde localStorage");
+				} else {
+					fetch("https://www.swapi.tech/api/starships?page=1&limit=50")
+						.then(res => res.json())
+						.then(response => {
+							localStorage.setItem("starships", JSON.stringify(response.results));
+							setStore({ starships: response.results });
+							console.log("starships desde API y almacenados en localStorage");
+						})
+						.catch(err => console.error(err));
+				}
 			},
 			llamarstarshipsId: (id) => {
 				fetch(`https://www.swapi.tech/api/starships/${id}`)
@@ -85,10 +140,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 			},
 			llamarvehicles: () => {
-				fetch("https://www.swapi.tech/api/vehicles?page=1&limit=40")
-					.then(res => res.json())
-					.then(response => setStore({ "vehicles": response.results }))
-					.catch(err => console.error(err))
+				const vehiclesLocalStorage = localStorage.getItem("vehicles");
+			
+				if (vehiclesLocalStorage) {
+					setStore({ vehicles: JSON.parse(vehiclesLocalStorage) });
+					console.log("vehicles desde localStorage");
+				} else {
+					fetch("https://www.swapi.tech/api/vehicles?page=1&limit=40")
+						.then(res => res.json())
+						.then(response => {
+							localStorage.setItem("vehicles", JSON.stringify(response.results));
+							setStore({ vehicles: response.results });
+							console.log("vehicles desde API y almacenados en localStorage");
+						})
+						.catch(err => console.error(err));
+				}
 			},
 			llamarvehiclesId: (id) => {
 				fetch(`https://www.swapi.tech/api/vehicles/${id}`)

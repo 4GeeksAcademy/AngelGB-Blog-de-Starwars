@@ -30,7 +30,7 @@ export const Card = ({ Foto, Nombre, Comentario, Favorito, OnError }) => {
                     {/* <button className="btn btn-primary m-1" onClick={Later} >ir a</button> */}
                     <button
                         type="button"
-                        className="btn btn-primary m-1" onClick={Favorito}><MdOutlineFavoriteBorder /></button>
+                        className="btn btn-warning m-1" onClick={Favorito}><MdOutlineFavoriteBorder /></button>
                 </div>
             </div>
         </div>
