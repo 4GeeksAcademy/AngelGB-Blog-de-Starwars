@@ -1,16 +1,22 @@
+@font-face {
+    font-family: 'Star wars';
+    src: url('../font/StarJedi.ttf') format('truetype');
+}
+
 body {
+    font-family: 'Star wars', ;
     background-color: rgb(54, 54, 54);
-    background-image: url(https://wallpapers.com/images/hd/star-wars-spaceship-4wonfi4vokbaueao.jpg);
+    background-image: url(https://wallpapers.com/images/hd/1920-x-1080-star-wars-88kwuwvd3lsml1zk.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
 }
 .encabezado {
-    background-color: black;
-    color: yellow;
+    color: rgb(218, 218, 14);
     text-decoration: none;
     outline: none;
+    text-shadow: 4px 4px 4px rgb(0, 0, 0);
 }
 video {
     position: fixed;
@@ -31,7 +37,9 @@ video {
     color: white;
 }
 .estilo {
-    color: yellow;
     text-decoration: none;
     outline: none;
+}
+.fotocard {
+    filter: drop-shadow(1px 1px 20px white);
 }

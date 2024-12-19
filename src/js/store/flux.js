@@ -1,18 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
+	
 			films: [],
 			filmsId: [],
 			people: [],
@@ -25,32 +14,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			starshipsId: [],
 			vehicles: [],
 			vehiclesId: [],
-			favorites: [],
+			favorites: {
+				characters: [],
+                species: [],
+                planets: [],
+				starships: [],
+				vehicles: [],
+				films: [],
+			},
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			},
 			llamarPeople: () => {
 				fetch("https://www.swapi.tech/api/people?page=1&limit=150")
 					.then(res => res.json())
@@ -131,24 +104,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().llamarstarships()
 				getActions().llamarvehicles()
 			},
-			addToFavorites: (item) => {
-				const store = getStore();
-				const exists = store.favorites.find(fav => fav.id === item.id);
-				if (!exists) {
-				  setStore({ favorites: [...store.favorites, item] });
-				}
-				console.log(getStore().favorites);
+			addToFavorites: (item, type) => {
+                const store = getStore();
+                let updatedFavorites = { ...store.favorites };
+                if (!updatedFavorites[type].some(fav => fav.uid === item.uid)) {
+                    updatedFavorites[type] = [...updatedFavorites[type], item];
+                    setStore({ favorites: updatedFavorites });
+                }
+				localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+				console.log(store.favorites.films);
 				
-			  },
-			// addToReadLater: (item) => {
-			// 	const store = getStore();
-			// 	const exists = store.readLater.find(rl => rl.id === item.id);
-			// 	if (!exists) {
-			// 		setStore({ readLater: [...store.readLater, item] });
-			// 	}
-			// },
-			
+            },
+            removeFromFavorites: (item, type) => {
+                const store = getStore();
+                let updatedFavorites = { ...store.favorites };
+                updatedFavorites[type] = updatedFavorites[type].filter(fav => fav.uid !== item.uid);
 
+                setStore({ favorites: updatedFavorites });
+				localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+            },
+			favStore: () => {
+				const storedFavorites = localStorage.getItem("favorites");
+				if (storedFavorites) {
+					setStore({ favorites: JSON.parse(storedFavorites) });
+				}
+			}
 		}
 	};
 };
