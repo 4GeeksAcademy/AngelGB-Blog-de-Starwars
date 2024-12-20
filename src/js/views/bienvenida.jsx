@@ -13,13 +13,12 @@ export const Bienvenida = () => {
         setTimeout(() => {
             navigate("/home");
         }, 10000);
-        // console.log(iniciar);
 
 
     }
 
     useEffect(() => {
-    	actions.llamarTodo()
+    	actions.llamarTodoAPI()
     }, [])
 
     return (
