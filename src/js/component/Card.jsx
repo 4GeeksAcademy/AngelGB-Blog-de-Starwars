@@ -3,13 +3,11 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import "atropos/css"
 import Atropos from "atropos/react";
 
-export const Card = ({ Foto, Nombre, Comentario, Favorito, OnError }) => {
-
-    const [ imagen , setImagen] = useState("")
+export const Card = ({ Foto, Nombre, Comentario, Favorito, OnError, Type }) => {
 
     return (
 
-        <div className="card h-100">
+        <div className="card h-100" key={Type}>
             <Atropos          // Envuelve la tarjeta con Atropos
                 activeOffset={40} // Configura el efecto 3D (profundidad)
                 shadow={true}    // Activa la sombra interactiva
@@ -27,10 +25,9 @@ export const Card = ({ Foto, Nombre, Comentario, Favorito, OnError }) => {
             </div>
             <div className="card-footer">
                 <div className="d-flex justify-content-center">
-                    {/* <button className="btn btn-primary m-1" onClick={Later} >ir a</button> */}
                     <button
                         type="button"
-                        className="btn btn-primary m-1" onClick={Favorito}><MdOutlineFavoriteBorder /></button>
+                        className="btn btn-warning m-1" onClick={Favorito}><MdOutlineFavoriteBorder /></button>
                 </div>
             </div>
         </div>

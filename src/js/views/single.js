@@ -10,8 +10,8 @@ export const Single = props => {
 
 	useEffect(() => {
 		if (focus == "characters") {
-			actions.llamarPeopleId(id)
-			setLlamada("peopleId")
+			actions.llamarCharactersId(id)
+			setLlamada("charactersId")
 		}
 		else if (focus == "species") {
 			actions.llamarSpeciesId(id)
